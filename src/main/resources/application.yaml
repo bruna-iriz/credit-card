@@ -1,0 +1,32 @@
+#Server Config
+server:
+  servlet:
+    context-path: /api
+
+# Database H2
+spring:
+  h2:
+    console:
+    path: /h2-console
+    enabled: true
+    settings:
+      trace: false
+      web:
+        allow-others: false
+
+  # Spring
+  datasource:
+    url: jdbc:h2:~/db
+    username: admin
+    password: admin
+  driver-class-name: org.h2.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+
+  #BugFix config do Springfox vs MVC
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+
+
+
