@@ -1,4 +1,4 @@
-package br.com.biv.creditcard.controller;
+package br.com.biv.creditcard.controller.resource.account;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;

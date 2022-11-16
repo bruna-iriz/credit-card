@@ -1,11 +1,10 @@
-package br.com.biv.creditcard.controller.mapper;
+package br.com.biv.creditcard.controller.mapper.account;
 
-import br.com.biv.creditcard.controller.AccountRequest;
-import br.com.biv.creditcard.controller.AccountResponse;
+import br.com.biv.creditcard.controller.resource.account.AccountRequest;
+import br.com.biv.creditcard.controller.resource.account.AccountResponse;
 import br.com.biv.creditcard.domain.model.Account;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package br.com.biv.creditcard.controller;
+package br.com.biv.creditcard.controller.resource.transaction;
 
 import br.com.biv.creditcard.domain.enums.MCCEnum;
 import com.fasterxml.jackson.annotation.JsonInclude;

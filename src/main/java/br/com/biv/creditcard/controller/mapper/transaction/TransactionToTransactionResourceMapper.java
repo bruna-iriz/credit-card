@@ -1,7 +1,7 @@
-package br.com.biv.creditcard.controller.mapper;
+package br.com.biv.creditcard.controller.mapper.transaction;
 
-import br.com.biv.creditcard.controller.TransactionRequest;
-import br.com.biv.creditcard.controller.TransactionResponse;
+import br.com.biv.creditcard.controller.resource.transaction.TransactionRequest;
+import br.com.biv.creditcard.controller.resource.transaction.TransactionResponse;
 import br.com.biv.creditcard.domain.model.Transaction;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;

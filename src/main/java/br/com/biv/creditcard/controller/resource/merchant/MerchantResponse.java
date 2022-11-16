@@ -1,4 +1,4 @@
-package br.com.biv.creditcard.controller;
+package br.com.biv.creditcard.controller.resource.merchant;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
@@ -12,7 +12,7 @@ import lombok.*;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MerchantResponse {
 
-    private Long merchantResponse;
+    private Long merchantId;
     private String name;
     private String state;
     private String country;

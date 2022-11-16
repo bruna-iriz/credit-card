@@ -1,6 +1,8 @@
 package br.com.biv.creditcard.controller;
 
-import br.com.biv.creditcard.controller.mapper.AccountToAccountResourceMapper;
+import br.com.biv.creditcard.controller.mapper.account.AccountToAccountResourceMapper;
+import br.com.biv.creditcard.controller.resource.account.AccountRequest;
+import br.com.biv.creditcard.controller.resource.account.AccountResponse;
 import br.com.biv.creditcard.domain.model.Account;
 import br.com.biv.creditcard.domain.service.AccountService;
 import lombok.extern.slf4j.Slf4j;
