@@ -1,7 +1,8 @@
 package br.com.biv.creditcard.domain.model;
 
-import br.com.biv.creditcard.domain.enums.BenefitsCategoriesEnum;
-import br.com.biv.creditcard.domain.enums.MCCEnum;
+import br.com.biv.creditcard.domain.enums.BenefitsCategories;
+import br.com.biv.creditcard.domain.enums.MCC;
+import br.com.biv.creditcard.domain.enums.StatusTransaction;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.AllArgsConstructor;
@@ -35,14 +36,18 @@ public class Transaction implements Serializable {
 
     @Column(name = "BENEFITS_CATEGORIES", nullable = false)
     @Enumerated(EnumType.ORDINAL)
-    private BenefitsCategoriesEnum benefitsCategoriesEnum;
+    private BenefitsCategories benefitsCategories;
 
     @Column(name = "TOTAL_AMOUNT")
     private BigDecimal totalAmount;
 
     @Column(name = "MCC", nullable = false)
     @Enumerated(EnumType.ORDINAL)
-    private MCCEnum mccEnum;
+    private MCC mcc;
+
+    @Column(name = "STATUS_TRANSACTION", nullable = false)
+    @Enumerated(EnumType.ORDINAL)
+    private StatusTransaction statusTransaction;
 
     @Column(name = "MERCHANT", nullable = false)
     private String merchant;

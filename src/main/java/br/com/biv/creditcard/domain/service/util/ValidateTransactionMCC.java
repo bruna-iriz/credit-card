@@ -4,7 +4,7 @@ import br.com.biv.creditcard.controller.resource.transaction.TransactionRequest;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import static br.com.biv.creditcard.domain.enums.MCCEnum.*;
+import static br.com.biv.creditcard.domain.enums.MCC.*;
 
 
 @Service
@@ -12,14 +12,14 @@ import static br.com.biv.creditcard.domain.enums.MCCEnum.*;
 public class ValidateTransactionMCC {
 
     public boolean isValidMCCTransaction(TransactionRequest transactionRequest) {
-        if (transactionRequest.getMccEnum().equals(RESTAURANT)) {
+        if (transactionRequest.getMcc().equals(RESTAURANT)) {
             System.out.println("É MCC!!! FOOD");
             return true;
-        } else if (transactionRequest.getMccEnum().equals(SUPERMARKET)) {
+        } else if (transactionRequest.getMcc().equals(SUPERMARKET)) {
             System.out.println("É MCC!!! MEAL");
             return true;
         } else {
-            if (transactionRequest.getMccEnum().equals(AUDIOVISUAL_MEDIA)) {
+            if (transactionRequest.getMcc().equals(AUDIOVISUAL_MEDIA)) {
                 System.out.println("É MCC!!! MERCHANT");
                 return true;
             } else {

@@ -3,6 +3,8 @@ package br.com.biv.creditcard.controller.resource.account;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
+import java.math.BigDecimal;
+
 
 @Getter
 @Setter
@@ -14,5 +16,6 @@ public class AccountResponse {
 
     private Long accountId;
     private String documentNumber;
+    private BigDecimal accountBalance;
 
 }

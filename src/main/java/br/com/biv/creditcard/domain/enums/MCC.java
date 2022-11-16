@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.util.stream.Stream;
 
 @Getter
-public enum MCCEnum {
+public enum MCC {
     RESTAURANT("5811", "5812", "5813", "5814"),
     SUPERMARKET("5411"),
     AUDIOVISUAL_MEDIA("5815"),
@@ -14,13 +14,13 @@ public enum MCCEnum {
 
     private String value;
 
-    private MCCEnum(String id) {
+    private MCC(String id) {
     }
 
-    private MCCEnum(String id, String id2, String id3, String id4) {
+    private MCC(String id, String id2, String id3, String id4) {
     }
 
-    public static MCCEnum getMCCId(String id) {
+    public static MCC getMCCId(String id) {
         return Stream.of(values())
                 .filter(value -> id.equalsIgnoreCase(id))
                 .findAny()

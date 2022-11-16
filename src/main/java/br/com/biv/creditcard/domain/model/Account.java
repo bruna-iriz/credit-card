@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Set;
 
 
@@ -30,6 +31,9 @@ public class Account implements Serializable {
 
     @Column(name = "DOCUMENT_NUMBER", nullable = false, unique = true)
     private String documentNumber;
+
+    @Column(name = "ACCOUNT_BALANCE", nullable = false)
+    private BigDecimal accountBalance;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "account")

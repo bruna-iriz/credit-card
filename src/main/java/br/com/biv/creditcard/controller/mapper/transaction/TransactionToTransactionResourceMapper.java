@@ -26,7 +26,7 @@ public class TransactionToTransactionResourceMapper {
         if (validateTransactionMCC.isValidMCCTransaction(transactionRequest)) {
             try {
                 transactionRequest.setTotalAmount(validateAmountBenefit(transactionRequest));
-                final Transaction transaction = modelMapper.map(transactionRequest, Transaction.class);
+                Transaction transaction = modelMapper.map(transactionRequest, Transaction.class);
                 System.out.println("TRANSACTION VALID ");
                 return transaction;
             } catch (PaymentNotValidException e) {

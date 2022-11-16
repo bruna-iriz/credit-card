@@ -5,7 +5,7 @@ import lombok.Getter;
 import java.util.stream.Stream;
 
 @Getter
-public enum BenefitsCategoriesEnum {
+public enum BenefitsCategories {
     MEAL(0),
     FOOD(1),
     CULTURE(2),
@@ -13,12 +13,12 @@ public enum BenefitsCategoriesEnum {
 
     private final Integer value;
 
-    private BenefitsCategoriesEnum(Integer value) {
+    private BenefitsCategories(Integer value) {
         this.value = value;
     }
 
     public static boolean getValue(Integer id) {
-        return Stream.of(BenefitsCategoriesEnum.values())
-                .anyMatch(benefitsCategoriesEnum -> benefitsCategoriesEnum.value.equals(id));
+        return Stream.of(BenefitsCategories.values())
+                .anyMatch(benefitsCategories -> benefitsCategories.value.equals(id));
     }
 }

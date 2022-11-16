@@ -1,12 +1,10 @@
 package br.com.biv.creditcard.controller.resource.transaction;
 
-import br.com.biv.creditcard.domain.enums.BenefitsCategoriesEnum;
-import br.com.biv.creditcard.domain.enums.MCCEnum;
-import br.com.biv.creditcard.domain.model.Account;
+import br.com.biv.creditcard.domain.enums.BenefitsCategories;
+import br.com.biv.creditcard.domain.enums.MCC;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
 
@@ -21,9 +19,9 @@ public class TransactionRequest {
     @JsonProperty("account_id")
     private Long accountId;
     @JsonProperty("benefits_categories")
-    private BenefitsCategoriesEnum benefitsCategoriesEnum;
+    private BenefitsCategories benefitsCategories;
     @JsonProperty("mcc")
-    private MCCEnum mccEnum;
+    private MCC mcc;
     @NotEmpty
     @JsonProperty("total_amount")
     private BigDecimal totalAmount;
