@@ -12,7 +12,7 @@ import lombok.*;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class MerchantResponse {
 
-    private Long accountId;
+    private Long merchantResponse;
     private String name;
     private String state;
     private String country;

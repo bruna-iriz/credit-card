@@ -17,7 +17,7 @@ import java.util.Set;
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "TB_ACCOUNT")
+@Table(name = "TB_MERCHANT")
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Merchant implements Serializable {
 
@@ -26,7 +26,7 @@ public class Merchant implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "MERCHANT_ID", unique = true)
-    private Long accountId;
+    private Long merchantId;
 
     @Column(name = "NAME", nullable = false, unique = true)
     private String name;
@@ -37,7 +37,4 @@ public class Merchant implements Serializable {
     @Column(name = "COUNTRY", nullable = false, unique = true)
     private String country;
 
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-    @OneToMany(mappedBy = "account")
-    private Set<Transaction> transactions;
 }
