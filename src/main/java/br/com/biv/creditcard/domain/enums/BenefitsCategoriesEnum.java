@@ -9,7 +9,7 @@ public enum BenefitsCategoriesEnum {
     MEAL(0),
     FOOD(1),
     CULTURE(2),
-    CASH(3);
+    CASH(null);
 
     private final Integer value;
 

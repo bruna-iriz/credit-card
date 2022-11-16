@@ -22,13 +22,10 @@ public class TransactionRequest {
     private Long accountId;
     @JsonProperty("benefits_categories")
     private BenefitsCategoriesEnum benefitsCategoriesEnum;
+    @JsonProperty("mcc")
+    private MCCEnum mccEnum;
     @NotEmpty
     @JsonProperty("total_amount")
     private BigDecimal totalAmount;
-    @JsonProperty("mcc")
-    private MCCEnum mccEnum;
     private String merchant;
-    @ManyToOne(optional = false)
-    private Account account;
-
 }

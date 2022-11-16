@@ -1,5 +1,6 @@
 package br.com.biv.creditcard.domain.service.impl;
 
+import br.com.biv.creditcard.domain.exception.account.AccountNotFoundException;
 import br.com.biv.creditcard.domain.model.Account;
 import br.com.biv.creditcard.domain.repository.AccountRepository;
 import br.com.biv.creditcard.domain.service.AccountService;
@@ -26,7 +27,8 @@ public class AccountServiceImpl implements AccountService {
 
     @Override
     public Optional<Account> findById(Long accountId) {
-        return accountRepository.findById(accountId);
+        return ofNullable(accountRepository.findById(accountId)
+                .orElseThrow(() -> new AccountNotFoundException("Account not found")));
     }
 
     @Override
