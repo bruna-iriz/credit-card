@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,7 +29,7 @@ public class MerchantController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public MerchantResponse createMerchant(@RequestBody MerchantRequest merchantRequest) {
+    public MerchantResponse createMerchant(@RequestBody @Valid MerchantRequest merchantRequest) {
         log.info("[POST][REQUEST]: Creating merchant {}", merchantRequest.getName());
         Merchant merchant = merchanToMerchanResourceMapper.convertToAccount(merchantRequest);
         Merchant merchantSaved = merchantService.save(merchant);

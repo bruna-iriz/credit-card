@@ -12,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,7 +29,7 @@ public class AccountController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public AccountResponse createAccount(@RequestBody AccountRequest accountRequest) {
+    public AccountResponse createAccount(@RequestBody @Valid AccountRequest accountRequest) {
         log.info("[POST][REQUEST]: Creating account for cardholder {}", accountRequest.getDocumentNumber());
         Account account = accountToAccountResourceMapper.convertToAccount(accountRequest);
         Account accountSaved = accountService.save(account);

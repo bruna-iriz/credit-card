@@ -3,6 +3,7 @@ package br.com.biv.creditcard.controller.resource.merchant;
 import lombok.*;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -12,6 +13,7 @@ import javax.validation.constraints.NotBlank;
 @ToString
 public class MerchantRequest {
 
+    @NotNull
     private String name;
     @NotBlank
     private String state;
