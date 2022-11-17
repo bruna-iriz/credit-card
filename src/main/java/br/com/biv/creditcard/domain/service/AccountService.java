@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 public interface AccountService {
+
     List<Account> listAll();
 
     Optional<Account> findById(Long accountId);

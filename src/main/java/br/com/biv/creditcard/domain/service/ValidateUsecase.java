@@ -24,6 +24,7 @@ public class ValidateUsecase {
             try {
                 transaction.setTotalAmount(validateAmountBenefit(transaction));
                 System.out.println("TRANSACTION VALID ");
+                transaction.setTotalAmount(transaction.getTotalAmount().negate());
             } catch (PaymentNotValidException e) {
                 return null;
             }
