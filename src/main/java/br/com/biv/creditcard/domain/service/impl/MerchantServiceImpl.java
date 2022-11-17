@@ -32,4 +32,8 @@ public class MerchantServiceImpl implements MerchantService {
         return merchantRepository.save(merchant);
     }
 
+    @Override
+    public void deleteById(Long merchantId) {
+        merchantRepository.deleteById(merchantId);
+    }
 }

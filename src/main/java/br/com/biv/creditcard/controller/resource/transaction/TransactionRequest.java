@@ -5,7 +5,6 @@ import br.com.biv.creditcard.domain.enums.MCC;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
-import javax.validation.constraints.NotEmpty;
 import java.math.BigDecimal;
 
 @Getter
@@ -22,7 +21,6 @@ public class TransactionRequest {
     private BenefitsCategories benefitsCategories;
     @JsonProperty("mcc")
     private MCC mcc;
-    @NotEmpty
     @JsonProperty("total_amount")
     private BigDecimal totalAmount;
     private String merchant;

@@ -16,7 +16,9 @@ public class MerchanToMerchanResourceMapper {
 
     private final ModelMapper modelMapper;
 
+
     public Merchant convertToAccount(MerchantRequest merchantRequest) {
+        getNameMerchantConcat(merchantRequest);
         return modelMapper.map(merchantRequest, Merchant.class);
     }
 
@@ -29,5 +31,13 @@ public class MerchanToMerchanResourceMapper {
                 .stream()
                 .map(this::convertToMerchantResponse)
                 .collect(Collectors.toList());
+    }
+
+    private void getNameMerchantConcat(MerchantRequest merchantRequest) {
+        StringBuilder sb = new StringBuilder(merchantRequest.getName());
+        sb.append(merchantRequest.getState());
+        sb.append(merchantRequest.getCountry());
+        String merchanName = sb.toString().toUpperCase();
+        merchantRequest.setName(merchanName);
     }
 }

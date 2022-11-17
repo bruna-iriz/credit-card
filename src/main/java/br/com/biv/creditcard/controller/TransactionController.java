@@ -11,8 +11,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
-import javax.validation.Valid;
-
 @Slf4j
 @EnableSwagger2
 @RestController
@@ -26,7 +24,7 @@ public class TransactionController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public TransactionResponse createTransaction(@RequestBody @Valid TransactionRequest transactionRequest) {
+    public TransactionResponse createTransaction(@RequestBody TransactionRequest transactionRequest) {
         log.info("[POST][REQUEST]: Creating transaction {}", transactionRequest);
         Transaction transaction = transactionToTransactionResourceMapper.convertToTransaction(transactionRequest);
         Transaction transactionSaved = transactionService.save(transaction);

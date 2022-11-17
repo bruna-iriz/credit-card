@@ -1,7 +1,6 @@
 package br.com.biv.creditcard.domain.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -9,7 +8,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 
 
 @Data
@@ -28,13 +26,13 @@ public class Merchant implements Serializable {
     @Column(name = "MERCHANT_ID", unique = true)
     private Long merchantId;
 
-    @Column(name = "NAME", nullable = false, unique = true)
+    @Column(name = "NAME", length = 40, nullable = false)
     private String name;
 
-    @Column(name = "STATE", nullable = false, unique = true)
+    @Column(name = "STATE", nullable = false)
     private String state;
 
-    @Column(name = "COUNTRY", nullable = false, unique = true)
+    @Column(name = "COUNTRY", nullable = false)
     private String country;
 
 }

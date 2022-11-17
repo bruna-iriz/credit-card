@@ -12,4 +12,6 @@ public interface MerchantService {
     Optional<Merchant> findById(Long merchantId);
 
     Merchant save(Merchant merchant);
+
+    void deleteById(Long merchantId);
 }

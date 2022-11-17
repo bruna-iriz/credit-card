@@ -1,8 +1,10 @@
 package br.com.biv.creditcard.controller.mapper.transaction;
 
+import br.com.biv.creditcard.controller.resource.merchant.MerchantRequest;
 import br.com.biv.creditcard.controller.resource.transaction.TransactionRequest;
 import br.com.biv.creditcard.controller.resource.transaction.TransactionResponse;
 import br.com.biv.creditcard.domain.exception.transaction.PaymentNotValidException;
+import br.com.biv.creditcard.domain.model.Merchant;
 import br.com.biv.creditcard.domain.model.Transaction;
 import br.com.biv.creditcard.domain.service.util.ValidateBenefitsCategories;
 import br.com.biv.creditcard.domain.service.util.ValidateTransactionMCC;
@@ -23,20 +25,31 @@ public class TransactionToTransactionResourceMapper {
     private final ValidateTransactionMCC validateTransactionMCC;
 
     public Transaction convertToTransaction(TransactionRequest transactionRequest) {
-        if (validateTransactionMCC.isValidMCCTransaction(transactionRequest)) {
-            try {
-                transactionRequest.setTotalAmount(validateAmountBenefit(transactionRequest));
-                Transaction transaction = modelMapper.map(transactionRequest, Transaction.class);
-                System.out.println("TRANSACTION VALID ");
-                return transaction;
-            } catch (PaymentNotValidException e) {
-                return null;
-            }
+            return modelMapper.map(transactionRequest, Transaction.class);
         }
-        final Transaction transaction = modelMapper.map(transactionRequest, Transaction.class);
-        System.out.println("TRANSACTION VALID ");
-        return transaction;
-    }
+
+//    public Transaction convertToTransaction(TransactionRequest transactionRequest) {
+//        if (validateTransactionMCC.isValidMCCTransaction(transactionRequest)) {
+//
+//            try {
+//                transactionRequest.setTotalAmount(validateAmountBenefit(transactionRequest));
+//                Transaction transaction = modelMapper.map(transactionRequest, Transaction.class);
+//                System.out.println("TRANSACTION VALID ");
+//                return transaction;
+//            } catch (PaymentNotValidException e) {
+//                return null;
+//            }
+//        }
+
+//        final Transaction transaction = modelMapper.map(transactionRequest, Transaction.class);
+//        System.out.println("TRANSACTION VALID ");
+//        transaction.setTotalAmount(transaction.getTotalAmount().negate());
+//        return transaction;
+//    }
+
+//    public BigDecimal validateAmountBenefit(TransactionRequest transactionRequest) {
+//        return validateBenefitsCategories.isBenefits(transactionRequest) ? transactionRequest.getTotalAmount().negate() : transactionRequest.getTotalAmount();
+//    }
 
     public TransactionResponse convertToTransactionResponse(Transaction transaction) {
         return modelMapper.map(transaction, TransactionResponse.class);
@@ -47,9 +60,5 @@ public class TransactionToTransactionResourceMapper {
                 .stream()
                 .map(this::convertToTransactionResponse)
                 .collect(Collectors.toList());
-    }
-
-    public BigDecimal validateAmountBenefit(TransactionRequest transactionRequest) {
-        return validateBenefitsCategories.isBenefits(transactionRequest) ? transactionRequest.getTotalAmount().negate() : transactionRequest.getTotalAmount();
     }
 }

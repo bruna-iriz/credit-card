@@ -32,8 +32,11 @@ public class MerchantController {
     public MerchantResponse createMerchant(@RequestBody @Valid MerchantRequest merchantRequest) {
         log.info("[POST][REQUEST]: Creating merchant {}", merchantRequest.getName());
         Merchant merchant = merchanToMerchanResourceMapper.convertToAccount(merchantRequest);
+        System.out.println("REQUEST: " + merchant.getName());
         Merchant merchantSaved = merchantService.save(merchant);
+        System.out.println("SAVED:" + merchantSaved.getName());
         MerchantResponse merchantResponse = merchanToMerchanResourceMapper.convertToMerchantResponse(merchantSaved);
+        System.out.println("RESPONSE:" + merchantResponse.getName());
         log.info("[POST][RESPONSE]: Merchant create with success, merchantId {}.", merchantSaved.getMerchantId());
         return merchantResponse;
     }
@@ -49,8 +52,17 @@ public class MerchantController {
 
     @GetMapping
     public ResponseEntity<List<MerchantResponse>> listAll() {
+        log.info("[LIST-ALL [REQUEST]: Listing all merchants");
         List<Merchant> merchants = merchantService.listAll();
         List<MerchantResponse> merchantResponse = merchanToMerchanResourceMapper.convertToMerchantsResponseList(merchants);
+        log.info("[LIST-ALL][RESPONSE] Successfully listed merchants");
         return ResponseEntity.status(HttpStatus.OK).body(merchantResponse);
+    }
+
+    @DeleteMapping("/{merchantId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteById(@PathVariable(value = "merchantId", required = false) Long merchantId) {
+        merchantService.deleteById(merchantId);
+        log.info("[DELETE]: Delete merchantId {}", merchantId);
     }
 }

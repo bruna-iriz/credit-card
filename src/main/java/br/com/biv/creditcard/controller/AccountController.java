@@ -49,8 +49,11 @@ public class AccountController {
 
     @GetMapping
     public ResponseEntity<List<AccountResponse>> listAll() {
+        log.info("[LIST-ALL [REQUEST]: Listing all accounts");
         List<Account> accounts = accountService.listAll();
         List<AccountResponse> accountResponse = accountToAccountResourceMapper.convertToAccountResponseList(accounts);
+        log.info("[LIST-ALL][RESPONSE] Successfully listed accounts");
         return ResponseEntity.status(HttpStatus.OK).body(accountResponse);
     }
+
 }

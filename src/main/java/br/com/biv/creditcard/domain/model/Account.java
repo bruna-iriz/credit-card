@@ -32,10 +32,14 @@ public class Account implements Serializable {
     @Column(name = "DOCUMENT_NUMBER", nullable = false, unique = true)
     private String documentNumber;
 
-    @Column(name = "ACCOUNT_BALANCE", nullable = false)
-    private BigDecimal accountBalance;
+    @Column(name = "ACCOUNT_BALANCE")
+    private BigDecimal accountBalance = BigDecimal.valueOf(1000);
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     @OneToMany(mappedBy = "account")
     private Set<Transaction> transactions;
+
+//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+//    @OneToMany(mappedBy = "payment")
+//    private Set<Payment> payments;
 }
