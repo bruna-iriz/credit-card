@@ -12,10 +12,9 @@ import java.util.stream.Collectors;
 
 @Component
 @AllArgsConstructor
-public class MerchanToMerchanResourceMapper {
+public class MerchantToMerchantResourceMapper {
 
     private final ModelMapper modelMapper;
-
 
     public Merchant convertToAccount(MerchantRequest merchantRequest) {
         getNameMerchantConcat(merchantRequest);
@@ -34,10 +33,11 @@ public class MerchanToMerchanResourceMapper {
     }
 
     private void getNameMerchantConcat(MerchantRequest merchantRequest) {
-        StringBuilder sb = new StringBuilder(merchantRequest.getName());
+        var requestName = merchantRequest.getName().substring(0, 25);
+        StringBuilder sb = new StringBuilder(requestName);
         sb.append(merchantRequest.getState());
         sb.append(merchantRequest.getCountry());
-        String merchanName = sb.toString().toUpperCase();
-        merchantRequest.setName(merchanName);
+        final var merchantName = sb.toString().toUpperCase();
+        merchantRequest.setName(merchantName);
     }
 }

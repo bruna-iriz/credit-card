@@ -1,6 +1,6 @@
 package br.com.biv.creditcard.controller;
 
-import br.com.biv.creditcard.controller.mapper.merchant.MerchanToMerchanResourceMapper;
+import br.com.biv.creditcard.controller.mapper.merchant.MerchantToMerchantResourceMapper;
 import br.com.biv.creditcard.domain.model.Merchant;
 import br.com.biv.creditcard.domain.service.MerchantService;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -25,7 +25,7 @@ class MerchantControllerTest {
     @MockBean
     MerchantService merchantService;
     @MockBean
-    MerchanToMerchanResourceMapper merchanToMerchanResourceMapper;
+    MerchantToMerchantResourceMapper merchantToMerchantResourceMapper;
     @Autowired
     MockMvc mockMvc;
     @Autowired
@@ -53,7 +53,7 @@ class MerchantControllerTest {
                 .perform(get("/merchants/{merchantId}", 10))
                 .andExpect(status().isOk());
 
-        verify(merchanToMerchanResourceMapper, atLeastOnce()).convertToMerchantResponse(any());
+        verify(merchantToMerchantResourceMapper, atLeastOnce()).convertToMerchantResponse(any());
         assertEquals("UBER", merchant.getName());
     }
 }
