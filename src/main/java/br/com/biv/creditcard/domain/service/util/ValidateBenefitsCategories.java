@@ -11,7 +11,6 @@ import static br.com.biv.creditcard.domain.enums.BenefitsCategories.*;
 @Service
 @AllArgsConstructor
 public class ValidateBenefitsCategories {
-
     public boolean isBenefits(Transaction transaction) {
 
         if (transaction.getBenefitsCategories().equals(FOOD)) {
@@ -29,6 +28,4 @@ public class ValidateBenefitsCategories {
                 return false;
             }
         }
-    }
-}
-
+    }}

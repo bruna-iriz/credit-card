@@ -1,5 +1,6 @@
 package br.com.biv.creditcard.domain.service.util;
 
+import br.com.biv.creditcard.controller.resource.transaction.TransactionRequest;
 import br.com.biv.creditcard.domain.exception.transaction.PaymentNotValidException;
 import br.com.biv.creditcard.domain.model.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import java.math.BigDecimal;
 
 @Service
 public class AuthorizerUseCase {
+
 
     @Autowired
     ValidateBenefitsCategories validateBenefitsCategories;
@@ -28,4 +30,5 @@ public class AuthorizerUseCase {
         final var amountWhenIsBenefit = validateBenefitsCategories.isBenefits(transaction) ? transaction.getAmount().negate() : transaction.getAmount();
         return amountWhenIsBenefit;
     }
+
 }

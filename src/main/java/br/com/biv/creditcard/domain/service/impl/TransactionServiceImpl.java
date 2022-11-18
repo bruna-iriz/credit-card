@@ -1,6 +1,7 @@
 package br.com.biv.creditcard.domain.service.impl;
 
 import br.com.biv.creditcard.controller.mapper.transaction.TransactionToTransactionResourceMapper;
+import br.com.biv.creditcard.domain.exception.account.AccountNotFoundException;
 import br.com.biv.creditcard.domain.model.Transaction;
 import br.com.biv.creditcard.domain.repository.AccountRepository;
 import br.com.biv.creditcard.domain.repository.TransactionRepository;
@@ -19,6 +20,7 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class TransactionServiceImpl implements TransactionService {
+
 
     @Autowired
     TransactionRepository transactionRepository;
@@ -70,6 +72,4 @@ public class TransactionServiceImpl implements TransactionService {
 //        }
 //
 //    }
-
-
 }
