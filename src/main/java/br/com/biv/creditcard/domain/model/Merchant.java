@@ -23,7 +23,7 @@ public class Merchant implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "MERCHANT_ID", unique = true)
+    @Column(name = "MERCHANT_ID", nullable = false, unique = true, updatable = false)
     private Long merchantId;
 
     @Column(name = "NAME", length = 40, nullable = false)

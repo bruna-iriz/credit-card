@@ -6,7 +6,7 @@ import br.com.biv.creditcard.domain.repository.AccountRepository;
 import br.com.biv.creditcard.domain.repository.TransactionRepository;
 import br.com.biv.creditcard.domain.service.AccountService;
 import br.com.biv.creditcard.domain.service.TransactionService;
-import br.com.biv.creditcard.domain.service.ValidateUsecase;
+import br.com.biv.creditcard.domain.service.util.AuthorizerUseCase;
 import br.com.biv.creditcard.domain.service.util.ValidateBenefitsCategories;
 import br.com.biv.creditcard.domain.service.util.ValidateTransactionMCC;
 import lombok.RequiredArgsConstructor;
@@ -33,11 +33,11 @@ public class TransactionServiceImpl implements TransactionService {
     @Autowired
     TransactionToTransactionResourceMapper mapper;
     @Autowired
-    ValidateUsecase validateUsecase = new ValidateUsecase();
+    AuthorizerUseCase authorizerUsecase = new AuthorizerUseCase();
 
     @Override
     public Transaction save(final Transaction transaction) {
-        validateUsecase.validar(transaction);
+        authorizerUsecase.validateAuthorizer(transaction);
         return transactionRepository.save(transaction);
     }
 
@@ -52,28 +52,24 @@ public class TransactionServiceImpl implements TransactionService {
     }
 
 
-//    public Transaction validar(Transaction transaction, TransactionRequest transactionRequest) {
-//        if (validateTransactionMCC.isValidMCCTransaction(transactionRequest)) {
+//    public ResponseEntity<?> sacar(@PathVariable BigDecimal amount, @PathVariable Long idAccount) {
+//        Optional<Account> account = accountRepository.findById(idAccount);
+//         var amountGreaterZero = amount.compareTo(BigDecimal.ZERO) > 0;
 //
-//            try {
-//                transactionRequest.setTotalAmount(validateAmountBenefit(transactionRequest));
-//                System.out.println("TRANSACTION VALID ");
-//            } catch (PaymentNotValidException e) {
-//                return null;
-//            }
+//
+//        if (amountGreaterZero) {
+//            this.accountService.sacar(amount, idAccount);
+//            Transaction transaction = new Transaction(account, amount, LocalDateTime.now());
+//            transactionRepository.save(transaction);
+//            return new ResponseEntity<>("Saque efetuado!", HttpStatus.OK);
+//
+//        } else{
+//
+//            return new ResponseEntity<>("Saque não efetuado!", HttpStatus.OK);
+//
 //        }
-//        return transaction;
-//    }
-//
-//    public BigDecimal validateAmountBenefit(TransactionRequest transactionRequest) {
-//        return validateBenefitsCategories.isBenefits(transactionRequest) ? transactionRequest.getTotalAmount().negate() : transactionRequest.getTotalAmount();
 //
 //    }
 
-
-//    @Override
-//    public Transaction save(final Transaction transaction) {
-//        return transactionRepository.save(transaction);
-//    }
 
 }

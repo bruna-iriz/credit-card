@@ -9,6 +9,7 @@
 //
 //import javax.persistence.*;
 //import java.io.Serializable;
+//import java.math.BigDecimal;
 //import java.time.LocalDateTime;
 //
 //@Data
@@ -31,7 +32,7 @@
 //    private Long accountId;
 //
 //    @Column(name = "BALANCE", nullable = false)
-//    private Long balance;
+//    private Double balance;
 //
 //    @Column(name = "EVENT_DATE", nullable = false)
 //    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
@@ -42,4 +43,33 @@
 //
 //    @OneToOne(optional = false)
 //    private Transaction transaction;
+//
+//    // métodos
+//    public Double depositar(Double valorDeposito) {
+//        if (valorDeposito > 0) {
+//            this.balance = this.balance + valorDeposito;
+//            return this.balance;
+//        } else {
+//            return this.balance;
+//        }
+//    }
+//
+//    // conta valor negativo
+//    public void saca(double valor) throws Exception {
+//        if (valor > this.balance) {
+//            throw new Exception("sem saldo");
+//        } else {
+//            this.balance -= valor;
+//        }
+//    }
+//
+//    public Double sacar(int valorSaque) {
+//        if (this.balance >= valorSaque) {
+//            this.balance = this.balance - valorSaque;
+//            return this.balance;
+//        } else {
+//            return this.balance;
+//        }
+//    }
+//
 //}

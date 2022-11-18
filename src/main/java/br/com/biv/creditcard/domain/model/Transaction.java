@@ -13,6 +13,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Data
 @Builder
@@ -27,7 +28,7 @@ public class Transaction implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "TRANSACTION_ID", nullable = false, unique = true)
+    @Column(name = "TRANSACTION_ID", nullable = false, unique = true, updatable = false)
     private Long transactionId;
 
     @Column(name = "ACCOUNT_ID", nullable = false)
@@ -40,6 +41,9 @@ public class Transaction implements Serializable {
     @Column(name = "TOTAL_AMOUNT")
     private BigDecimal totalAmount;
 
+    @Column(name = "AMOUNT")
+    private BigDecimal amount;
+
     @Column(name = "MCC", nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private MCC mcc;
@@ -47,7 +51,6 @@ public class Transaction implements Serializable {
 //    @Column(name = "STATUS_TRANSACTION")
 //    @Enumerated(EnumType.ORDINAL)
 //    private StatusTransaction statusTransaction;
-
 
 
     @Column(name = "MERCHANT", nullable = false)

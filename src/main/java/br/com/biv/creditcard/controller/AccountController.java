@@ -15,6 +15,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Stream;
 
 @Slf4j
 @EnableSwagger2
@@ -29,7 +30,7 @@ public class AccountController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public AccountResponse createAccount(@RequestBody @Valid AccountRequest accountRequest) {
+    public AccountResponse createAccount(@Valid @RequestBody AccountRequest accountRequest) {
         log.info("[POST][REQUEST]: Creating account for cardholder {}", accountRequest.getDocumentNumber());
         Account account = accountToAccountResourceMapper.convertToAccount(accountRequest);
         Account accountSaved = accountService.save(account);
@@ -55,5 +56,21 @@ public class AccountController {
         log.info("[LIST-ALL][RESPONSE] Successfully listed accounts");
         return ResponseEntity.status(HttpStatus.OK).body(accountResponse);
     }
+
+
+//    @PutMapping("/{accountId}")
+//    public AccountResponse update(@PathVariable (value = "accountId", required = true) @RequestBody AccountRequest accountRequest) {
+//        Account account = accountToAccountResourceMapper.convertToAccount(accountRequest);
+//        Account accountSaved = accountService.save(account);
+//        log.info("[PUT][REQUEST]: Searching for accountId");
+//        Account accountById = accountService.update(accountSaved.getAccountId(), accountSaved);
+//        Account accountUpdateSaved = accountService.save(accountById);
+//        final AccountResponse accountResponse = accountToAccountResourceMapper.convertToAccountResponse(accountUpdateSaved);
+//        log.info("[PUT][RESPONSE] Update cardholder information.");
+//        return accountResponse;
+//    }
+
+    //
+
 
 }

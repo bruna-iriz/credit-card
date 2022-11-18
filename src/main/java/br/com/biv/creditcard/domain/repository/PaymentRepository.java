@@ -10,7 +10,7 @@
 //public interface PaymentRepository extends JpaRepository<Payment, Long> {
 //
 //    @Modifying
-//    @Query("update Conta c set c.saldo = c.saldo + ?1 where c.idConta = ?2")
-//    void setFixedSaldoFor(Double  amount, Long accountId);
+//    @Query("update Account c set c.balance = c.balance + ?1 where c.idAccount = ?2")
+//    void setFixedSaldoFor(Double  balance, Long accountId);
 //
 //}

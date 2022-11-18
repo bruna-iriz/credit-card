@@ -32,11 +32,8 @@ public class MerchantController {
     public MerchantResponse createMerchant(@RequestBody @Valid MerchantRequest merchantRequest) {
         log.info("[POST][REQUEST]: Creating merchant {}", merchantRequest.getName());
         Merchant merchant = merchantToMerchantResourceMapper.convertToAccount(merchantRequest);
-        System.out.println("REQUEST: " + merchant.getName());
         Merchant merchantSaved = merchantService.save(merchant);
-        System.out.println("SAVED:" + merchantSaved.getName());
         MerchantResponse merchantResponse = merchantToMerchantResourceMapper.convertToMerchantResponse(merchantSaved);
-        System.out.println("RESPONSE:" + merchantResponse.getName());
         log.info("[POST][RESPONSE]: Merchant create with success, merchantId {}.", merchantSaved.getMerchantId());
         return merchantResponse;
     }

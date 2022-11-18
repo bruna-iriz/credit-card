@@ -1,5 +1,6 @@
 package br.com.biv.creditcard.domain.service.util;
 
+import br.com.biv.creditcard.controller.resource.transaction.TransactionRequest;
 import br.com.biv.creditcard.domain.model.Transaction;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;

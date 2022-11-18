@@ -5,8 +5,6 @@
 //import br.com.biv.creditcard.domain.service.PaymentService;
 //import lombok.RequiredArgsConstructor;
 //import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.data.jpa.repository.Modifying;
-//import org.springframework.data.jpa.repository.Query;
 //import org.springframework.stereotype.Service;
 //
 //@Service
@@ -18,7 +16,6 @@
 //
 //    @Override
 //    public Payment save(final Payment payment) {
-//
 //        return paymentRepository.save(payment);
 //    }
 //
@@ -29,7 +26,7 @@
 //
 //
 //    @Override
-//    public void withdraw (Double amount, Long accountId) {
+//    public void withdraw(Double amount, Long accountId) {
 //        paymentRepository.setFixedSaldoFor(amount, accountId);
 //    }
 //

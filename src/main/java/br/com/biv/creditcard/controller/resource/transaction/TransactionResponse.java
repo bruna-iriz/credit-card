@@ -1,7 +1,7 @@
 package br.com.biv.creditcard.controller.resource.transaction;
 
 import br.com.biv.creditcard.domain.enums.MCC;
-import br.com.biv.creditcard.domain.model.Merchant;
+import br.com.biv.creditcard.domain.model.Account;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
@@ -17,17 +17,12 @@ import java.time.LocalDateTime;
 public class TransactionResponse {
 
     private Long accountId;
-    private BigDecimal totalAmount;
     private MCC mcc;
     private String merchant;
     private Long transactionId;
-//    private StatusTransaction statusTransaction;
+    private BigDecimal totalAmount;
+//    private BigDecimal accountBalance;
+    //    private StatusTransaction statusTransaction;
     private LocalDateTime eventDate = LocalDateTime.now();
-
-    public String concat(Merchant merchant) {
-        return merchant.getName()
-                .concat(merchant.getState())
-                .concat(merchant.getCountry());
-    }
 
 }
