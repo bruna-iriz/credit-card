@@ -4,15 +4,20 @@ import br.com.biv.creditcard.controller.mapper.account.AccountToAccountResourceM
 import br.com.biv.creditcard.domain.model.Account;
 import br.com.biv.creditcard.domain.service.AccountService;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
+import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -35,6 +40,17 @@ class AccountControllerTest {
         assertNotNull(mockMvc);
     }
 
+    @BeforeEach
+    void build() {
+        final Account build = Account
+                .builder()
+                .accountId(1L)
+                .documentNumber("12345678")
+                .build();
+
+        accountService.save(build);
+    }
+
     @Test
     public void shouldReturnSuccess_WhenGetAccountById() throws Exception {
 
@@ -52,6 +68,15 @@ class AccountControllerTest {
 
         verify(accountToAccountResourceMapper, atLeastOnce()).convertToAccountResponse(any());
         assertEquals("909876543212", account.getDocumentNumber());
+    }
+
+    @Test
+    void shouldReturnSuccess_WhenListAllAccounts() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get("/accounts"))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print());
+
+        verify(accountToAccountResourceMapper, atLeastOnce()).convertToAccountResponseList(anyList());
     }
 
 }
