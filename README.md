@@ -1,6 +1,6 @@
-## API Simple Bank
+## API CREDIT CARD
 
-API de autorização de transações bancárias para cartão de crédito.
+API de autorização de transações bancárias para cartão de crédito/benefícios.
 
 ### Tecnologias utilizadas
 
