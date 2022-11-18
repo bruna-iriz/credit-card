@@ -21,7 +21,9 @@ public class TransactionRequest {
     private BenefitsCategories benefitsCategories;
     @JsonProperty("mcc")
     private MCC mcc;
-    @JsonProperty("amount")
-    private BigDecimal amount;
+    @JsonProperty("total_amount")
+    private BigDecimal totalAmount;
+//    @JsonProperty("amount")
+//    private BigDecimal amount;
     private String merchant;
 }
