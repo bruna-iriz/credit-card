@@ -1,7 +1,7 @@
 package br.com.biv.creditcard.domain.service.impl;
 
 import br.com.biv.creditcard.controller.mapper.transaction.TransactionToTransactionResourceMapper;
-import br.com.biv.creditcard.domain.exception.BadRequestException;
+import br.com.biv.creditcard.domain.enums.StatusTransaction;
 import br.com.biv.creditcard.domain.exception.account.AccountNotFoundException;
 import br.com.biv.creditcard.domain.model.Transaction;
 import br.com.biv.creditcard.domain.repository.AccountRepository;
@@ -45,7 +45,9 @@ public class TransactionServiceImpl implements TransactionService {
             throw new AccountNotFoundException("Unable to proceed with transaction, non-existent account.");
         }
         authorizerUsecase.validateAuthorizer(transaction);
-        return transactionRepository.save(transaction);
+        final var transactionSaved = transactionRepository.save(transaction);
+        transactionSaved.setStatusTransaction(StatusTransaction.APPROVED);
+        return transactionSaved;
     }
 
     @Override
@@ -58,23 +60,4 @@ public class TransactionServiceImpl implements TransactionService {
         return transactionRepository.findAll();
     }
 
-
-//    public ResponseEntity<?> sacar(@PathVariable BigDecimal amount, @PathVariable Long idAccount) {
-//        Optional<Account> account = accountRepository.findById(idAccount);
-//         var amountGreaterZero = amount.compareTo(BigDecimal.ZERO) > 0;
-//
-//
-//        if (amountGreaterZero) {
-//            this.accountService.sacar(amount, idAccount);
-//            Transaction transaction = new Transaction(account, amount, LocalDateTime.now());
-//            transactionRepository.save(transaction);
-//            return new ResponseEntity<>("Saque efetuado!", HttpStatus.OK);
-//
-//        } else{
-//
-//            return new ResponseEntity<>("Saque não efetuado!", HttpStatus.OK);
-//
-//        }
-//
-//    }
 }

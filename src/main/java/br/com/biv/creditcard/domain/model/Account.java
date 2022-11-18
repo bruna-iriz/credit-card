@@ -39,9 +39,4 @@ public class Account implements Serializable {
     @OneToMany(mappedBy = "account")
     private Set<Transaction> transactions;
 
-//    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
-//    @OneToMany(mappedBy = "payment")
-//    private Set<Payment> payments;
-
-
 }

@@ -1,6 +1,6 @@
 package br.com.biv.creditcard.domain.service.util;
 
-import br.com.biv.creditcard.controller.resource.transaction.TransactionRequest;
+import br.com.biv.creditcard.domain.enums.StatusTransaction;
 import br.com.biv.creditcard.domain.exception.transaction.PaymentNotValidException;
 import br.com.biv.creditcard.domain.model.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +22,7 @@ public class AuthorizerUseCase {
             try {
                 transaction.setTotalAmount(validateAmountBenefit(transaction));
             } catch (PaymentNotValidException e) {
+                transaction.setStatusTransaction(StatusTransaction.REJECTED);
             }
         }
     }

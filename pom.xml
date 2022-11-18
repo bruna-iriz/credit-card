@@ -98,10 +98,10 @@
                 <configuration>
                     <!--                    <skip>${maven.unit-test.skip}</skip>-->
                     <excludes>
-                        <exclude>**/simplebank/config/**/*.*</exclude>
-                        <exclude>**/simplebank/config/*.*</exclude>
-                        <exclude>**/simplebank/domain/*.*</exclude>
-                        <exclude>**/simplebank/SimpleBankApplication.*</exclude>
+                        <exclude>**/credit-card/config/**/*.*</exclude>
+                        <exclude>**/credit-card/config/*.*</exclude>
+                        <exclude>**/credit-card/domain/enums/*.*</exclude>
+                        <exclude>**/credit-card/CreditCardApplication.*</exclude>
                     </excludes>
                 </configuration>
                 <executions>

@@ -44,15 +44,16 @@ Endpoints:
 |GET    |http://localhost:8080/merchants/{id} | Buscar um comerciante através do id|
 |DELETE |http://localhost:8080/merchants/{id} | Deletar um comerciante através do id |
 |GET    |http://localhost:8080/transactions/ | Listar todas as transações |
-|POST   |http://localhost:8080/transactions| Efetivar transações para um cliente existente |
-|GET    |http://localhost:8080/transactions/{id} | Buscar uma transação através do id |
+|POST   |http://localhost:8080/transactions| Efetivar transação para um cliente existente |
+
 
 ### Swagger
 
 | Descrição |  Link |
 | ------     | ------ |
-| Swagger - Account | http://localhost:8080/swagger-ui.html#/account-controller |
-| Swagger - Transactions | http://localhost:8080/swagger-ui.html#/transaction-controller |
+| Account | http://localhost:8080/swagger-ui.html#/account-controller |
+| Merchant | http://localhost:8080/swagger-ui.html#/merchant-controller |
+| Transactions | http://localhost:8080/swagger-ui.html#/transaction-controller |
 
 - A coleção com as chamadas através do Postman está no diretório: ```./creditcard/postman```
 

@@ -10,7 +10,7 @@ public enum MCC {
     SUPERMARKET("5411"),
     AUDIOVISUAL_MEDIA("5815"),
     MERCHANT("4000"),
-    OTHERS(null);
+    OTHERS("0");
 
     private String value;
 

@@ -1,6 +1,7 @@
 package br.com.biv.creditcard.controller.resource.transaction;
 
 import br.com.biv.creditcard.domain.enums.MCC;
+import br.com.biv.creditcard.domain.enums.StatusTransaction;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
 
@@ -20,8 +21,8 @@ public class TransactionResponse {
     private Long transactionId;
     private MCC mcc;
     private BigDecimal totalAmount;
-    //    private BigDecimal accountBalance;
-    //    private StatusTransaction statusTransaction;
+    private StatusTransaction statusTransaction;
     private LocalDateTime eventDate = LocalDateTime.now();
+    //    private BigDecimal accountBalance;
 
 }

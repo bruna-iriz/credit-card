@@ -2,9 +2,9 @@ package br.com.biv.creditcard.domain.model;
 
 import br.com.biv.creditcard.domain.enums.BenefitsCategories;
 import br.com.biv.creditcard.domain.enums.MCC;
+import br.com.biv.creditcard.domain.enums.StatusTransaction;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,7 +14,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Data
 @Builder
@@ -50,12 +49,12 @@ public class Transaction implements Serializable {
     private BigDecimal amount;
 
     @Column(name = "MCC", nullable = false)
-    @Enumerated(EnumType.ORDINAL)
+    @Enumerated(EnumType.STRING)
     private MCC mcc;
 
-//    @Column(name = "STATUS_TRANSACTION")
-//    @Enumerated(EnumType.ORDINAL)
-//    private StatusTransaction statusTransaction;
+    @Column(name = "STATUS_TRANSACTION")
+    @Enumerated(EnumType.STRING)
+    private StatusTransaction statusTransaction;
 
 
 //    @Column(name = "MERCHANT", nullable = false)
