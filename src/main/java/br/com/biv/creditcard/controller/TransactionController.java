@@ -32,9 +32,7 @@ public class TransactionController {
         log.info("[POST][REQUEST]: Creating transaction {}", transactionRequest);
         Transaction transaction = transactionToTransactionResourceMapper.convertToTransaction(transactionRequest);
         Transaction transactionSaved = transactionService.save(transaction);
-        TransactionResponse transactionResponse = transactionToTransactionResourceMapper.convertToTransactionResponse(transactionSaved);
-        log.info("[POST][RESPONSE]: Transaction create with success.");
-        return transactionResponse;
+        return transactionToTransactionResourceMapper.convertToTransactionResponse(transactionSaved);
     }
 
     @GetMapping("/{transactionId}")

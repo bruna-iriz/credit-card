@@ -1,6 +1,7 @@
 package br.com.biv.creditcard.domain.service.impl;
 
 import br.com.biv.creditcard.domain.exception.BadRequestException;
+import br.com.biv.creditcard.domain.exception.account.AccountNotFoundException;
 import br.com.biv.creditcard.domain.model.Merchant;
 import br.com.biv.creditcard.domain.repository.MerchantRepository;
 import br.com.biv.creditcard.domain.service.MerchantService;
@@ -11,6 +12,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+
+import static java.util.Optional.ofNullable;
 
 @Service
 @RequiredArgsConstructor
@@ -26,7 +29,8 @@ public class MerchantServiceImpl implements MerchantService {
 
     @Override
     public Optional<Merchant> findById(Long merchantId) {
-        return merchantRepository.findById(merchantId);
+        return ofNullable(merchantRepository.findById(merchantId)
+                .orElseThrow(() -> new AccountNotFoundException("Merchant not found")));
     }
 
     @Override
