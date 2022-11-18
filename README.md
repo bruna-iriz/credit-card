@@ -51,7 +51,7 @@ Endpoints:
 |POST   |http://localhost:8080/accounts | Cadastrar uma nova conta de cliente |
 |GET    |http://localhost:8080/accounts/{id} | Buscar uma conta de cliente através do id |
 |GET    |http://localhost:8080/merchants/{id} | Listar todos os comerciantes |
-|POST   |http://localhost:8080/merchants | Cadastrar um novo comerciante |
+|POST   |http://localhost:8080/merchants | Cadastrar um novo comerciante com o nome customizado|
 |GET    |http://localhost:8080/merchants/{id} | Buscar um comerciante através do id|
 |DELETE |http://localhost:8080/merchants/{id} | Deletar um comerciante através do id |
 |GET    |http://localhost:8080/transactions/ | Listar todas as transações |
