@@ -1,6 +1,7 @@
 package br.com.biv.creditcard.domain.service.impl;
 
 import br.com.biv.creditcard.controller.mapper.transaction.TransactionToTransactionResourceMapper;
+import br.com.biv.creditcard.domain.exception.BadRequestException;
 import br.com.biv.creditcard.domain.exception.account.AccountNotFoundException;
 import br.com.biv.creditcard.domain.model.Transaction;
 import br.com.biv.creditcard.domain.repository.AccountRepository;
@@ -39,6 +40,10 @@ public class TransactionServiceImpl implements TransactionService {
 
     @Override
     public Transaction save(final Transaction transaction) {
+        final var accountRepositoryById = accountRepository.findById(transaction.getAccountId());
+        if (accountRepositoryById.isEmpty()) {
+            throw new AccountNotFoundException("Unable to proceed with transaction, non-existent account.");
+        }
         authorizerUsecase.validateAuthorizer(transaction);
         return transactionRepository.save(transaction);
     }
