@@ -68,6 +68,20 @@ mvn clean verify
 | ------     | ------ | ------ |
 | Relatório de cobertura de testes | target/site/jacoco/index.html | (testes em andamento)
 
- 
+### TODO Próximos Passos/Melhorias
+
+- **API/Código:**
+    - Melhorias no tratamento de erros
+    - Refatoração de metodos
+    - Criar ListAll paginado
+
+
+- **TESTES | QUALIDADE:**
+    - Arquitetura de código [ArchUnit]
+    - Qualidade de código [SonarQube]
+    - Criar novos cenários de testes e aumentar o coverage
+
+- **CONTEINERIZÇÃO:**
+    - Empacotamento do código de software e suas bilbilotecas (em andamento) [Docker]
 
 > :construction: Projeto em construção :construction:
