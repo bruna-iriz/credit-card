@@ -4,6 +4,7 @@ import br.com.biv.creditcard.domain.enums.BenefitsCategories;
 import br.com.biv.creditcard.domain.enums.MCC;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -34,6 +35,10 @@ public class Transaction implements Serializable {
     @Column(name = "ACCOUNT_ID", nullable = false)
     private Long accountId;
 
+    @Column(name = "MERCHANT_ID", nullable = false)
+    private Long merchantId;
+
+
     @Column(name = "BENEFITS_CATEGORIES", nullable = false)
     @Enumerated(EnumType.ORDINAL)
     private BenefitsCategories benefitsCategories;
@@ -53,8 +58,8 @@ public class Transaction implements Serializable {
 //    private StatusTransaction statusTransaction;
 
 
-    @Column(name = "MERCHANT", nullable = false)
-    private String merchant;
+//    @Column(name = "MERCHANT", nullable = false)
+//    private String merchant;
 
     @Column(name = "EVENT_DATE", nullable = false)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
@@ -62,4 +67,7 @@ public class Transaction implements Serializable {
 
     @ManyToOne(optional = false)
     private Account account;
+
+    @ManyToOne(optional = false)
+    private Merchant merchant;
 }

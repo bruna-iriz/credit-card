@@ -17,13 +17,15 @@ public class TransactionRequest {
 
     @JsonProperty("account_id")
     private Long accountId;
+    @JsonProperty("merchant_id")
+    private String merchantId;
     @JsonProperty("benefits_categories")
     private BenefitsCategories benefitsCategories;
     @JsonProperty("mcc")
     private MCC mcc;
     @JsonProperty("total_amount")
     private BigDecimal totalAmount;
-//    @JsonProperty("amount")
+    //    @JsonProperty("amount")
 //    private BigDecimal amount;
-    private String merchant;
+
 }

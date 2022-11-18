@@ -43,11 +43,5 @@ public class Account implements Serializable {
 //    @OneToMany(mappedBy = "payment")
 //    private Set<Payment> payments;
 
-    public AccountResponse toResponse() {
-        return AccountResponse.builder()
-                .accountId(accountId)
-                .documentNumber(documentNumber)
-                .accountBalance(accountBalance)
-                .build();
-    }
+
 }
