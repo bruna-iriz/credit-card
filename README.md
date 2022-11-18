@@ -19,20 +19,17 @@ Realizar o clone do projeto:
 ```sh
 $ git clone https://github.com/bruna-iriz/credit-card.git
 ```
-####Acessar o diretório do projeto e compilar com o maven:
-
-####Compilar com o Maven:
+Acessar o diretório do projeto e compilar com o maven:
 ```sh
 $ mvn clean install
 ```
-####Rodar o projeto:
+Rodar o projeto:
 ```sh
 $ mvn spring-boot:run
 ```
 ### Via Docker
 
-####Compilar com o Maven:
-
+Acessar o diretório do projeto e compilar com o maven:
 ```sh
 $ mvn clean install
 ```
