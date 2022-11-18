@@ -95,6 +95,5 @@ mvn clean verify
 - **CONTEINERIZÇÃO:**
     - Empacotamento do código de software e suas bilbilotecas (em andamento) [Docker]
 
-```
+
 > :construction: Projeto em construção :construction:
-```
