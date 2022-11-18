@@ -15,10 +15,25 @@ API de autorização de transações bancárias para cartão de crédito/benefí
 
 Realizar o clone do projeto:
 
+### Via Docker
 ```sh
 $ git clone https://github.com/bruna-iriz/credit-card.git
 ```
-Executar o clean e instalação do Maven na pasta do projeto:
+Acessar o diretório do projeto:
+```sh
+$ cd credit-card
+```
+Compilar com o Maven:
+```sh
+$ mvn clean install
+```
+Rodar o projeto:
+```sh
+$ mvn spring-boot:run
+```
+### Via Docker
+
+Compilar com o Maven:
 
 ```sh
 $ mvn clean install
@@ -29,6 +44,7 @@ $ mvn clean package
 ```sh
 $ docker-compose up --build
 ```
+*ps.: (sigo testando se executa corretamente, pois a subida via do docker aprensentou instabilidade)
 
 ### Documentação da API
 
@@ -84,4 +100,6 @@ mvn clean verify
 - **CONTEINERIZÇÃO:**
     - Empacotamento do código de software e suas bilbilotecas (em andamento) [Docker]
 
+```
 > :construction: Projeto em construção :construction:
+```
