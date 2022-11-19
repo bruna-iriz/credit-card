@@ -79,11 +79,11 @@ mvn clean verify
 | ------     | ------ | ------ |
 | Relatório de cobertura de testes | target/site/jacoco/index.html | (testes em andamento)
 
-### TODO Próximos Passos/Melhorias
+### :soon: Backlog/Melhorias
 
 - **API/Código:**
     - Melhorias no tratamento de erros
-    - Refatoração de metodos
+    - Refatoração para deixar o código mais limpo e performático
     - Criar ListAll paginado
 
 
@@ -91,9 +91,16 @@ mvn clean verify
     - Arquitetura de código [ArchUnit]
     - Qualidade de código [SonarQube]
     - Criar novos cenários de testes e aumentar o coverage
+  
 
-- **CONTEINERIZÇÃO:**
-    - Empacotamento do código de software e suas bilbilotecas (em andamento) [Docker]
+### Open Question
+L4. Acredito que poderiamos levar essa responsabilidade para o banco de dados e aplicar os conceitos do ACID.
+Garantindo a execução completa de uma transação, a consistência de estado entre as operações, persistência e demais características dessa abordagem.
 
+Estudaria qual melhor plano para atender o caso, de preferência que evite cascata para não ter que desafazer várias operações.
+Aplicando o protocolo de transação garantindo o Rollback quando necessário.
 
+Em conjunto, investiria em técnicas de código e ferramentas para melhor garantia de performance, resiliência e escalabilidade da aplicação.
+
+### EM BREVE
 > :construction: Projeto em construção :construction:
