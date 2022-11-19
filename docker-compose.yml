@@ -10,7 +10,7 @@ services:
       PROFILE: dev
       ADDITIONAL_OPTS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -Xmx1G -Xms128m -XX:MaxMetaspaceSize=128m
       DDL_AUTO: update
-      JDBC_URL: jdbc:mysql://mysql-accounts:3306/db_credit_card
+      JDBC_URL: jdbc:mysql://mysql-accounts:3306/db_api
       JDBC_DRIVER: com.mysql.jdbc.Driver
       DATASOURCE_USERNAME: user
       DATASOURCE_PASSWORD: biv@user
@@ -28,11 +28,11 @@ services:
     image: mysql:5.6
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: froot
-      MYSQL_DATABASE: db_credit_card
-      MYSQL_USER: user
-      MYSQL_PASSWORD: biv@user
-      JDBC_URL: jdbc:mysql://db_credit_card:3306/db_credit_card?createDatabaseIfNotExist=true&autoReconnect=true&useUnicode=true&charactedEncoding=UTF-8&useTimezone=true&serverTimezone=UTC
+#      MYSQL_ROOT_PASSWORD: froot
+      MYSQL_DATABASE: db_api
+      MYSQL_USER: biv
+      MYSQL_PASSWORD: biv
+      JDBC_URL: jdbc:mysql://db_api:3306/db_api?createDatabaseIfNotExist=true&autoReconnect=true&useUnicode=true&charactedEncoding=UTF-8&useTimezone=true&serverTimezone=UTC
       JDBC_DRIVER: com.mysql.cj.jdbc.Driver
     ports:
       - "3306:3306"

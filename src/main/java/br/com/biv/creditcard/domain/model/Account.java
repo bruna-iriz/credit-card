@@ -1,6 +1,5 @@
 package br.com.biv.creditcard.domain.model;
 
-import br.com.biv.creditcard.controller.resource.account.AccountResponse;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

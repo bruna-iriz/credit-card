@@ -15,9 +15,9 @@ public class MerchantRequest {
 
     @NotNull
     private String name;
-    @NotBlank
+    @NotNull
     private String state;
-    @NotBlank
+    @NotNull
     private String country;
 
 }
