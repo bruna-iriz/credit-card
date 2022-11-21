@@ -1,37 +1,16 @@
-version: '3.3'
+version: "3.9"
+
+networks:
+  creditcard-network:
+    driver: bridge
 
 services:
-  credit-card:
-    build:
-      context: ./
-      dockerfile: ./Dockerfile
-    image: credit-card/api
+  creditcard-db:
+    image: mysql:8.0
     environment:
-      PROFILE: dev
-      ADDITIONAL_OPTS: -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -Xmx1G -Xms128m -XX:MaxMetaspaceSize=128m
-      DDL_AUTO: update
-      JDBC_URL: jdbc:mysql://mysql-accounts:3306/db_api
-      JDBC_DRIVER: com.mysql.jdbc.Driver
-      DATASOURCE_USERNAME: user
-      DATASOURCE_PASSWORD: biv@user
-    ports:
-      - "8080:8080"
-      - "5005:5005"
-    depends_on:
-      - db_credit_card
-    links:
-      - db_credit_card
-    networks:
-      - api
-
-  db_credit_card:
-    image: mysql:5.6
-    restart: always
-    environment:
-#      MYSQL_ROOT_PASSWORD: froot
-      MYSQL_DATABASE: db_api
-      MYSQL_USER: biv
-      MYSQL_PASSWORD: biv
+      MYSQL_DATABASE: root
+      MYSQL_USER: "root"
+      MYSQL_ROOT_PASSWORD: "root"
       JDBC_URL: jdbc:mysql://db_api:3306/db_api?createDatabaseIfNotExist=true&autoReconnect=true&useUnicode=true&charactedEncoding=UTF-8&useTimezone=true&serverTimezone=UTC
       JDBC_DRIVER: com.mysql.cj.jdbc.Driver
     ports:
@@ -40,7 +19,15 @@ services:
     volumes:
       - ./docker/volume_mysql:/var/lib/mysql
     networks:
-      - api
-networks:
-  api:
-    driver: bridge
+      - creditcard-network
+  credit-card:
+    image: birizv/creditcard-api
+    command: ["/wait-for-it.sh", "creditcard-db:3306", "-t", "30", "--", "java", "-jar", "api.jar"]
+    environment:
+      DB_HOST: creditcard-db
+    ports:
+      - "8080:8080"
+    networks:
+      - creditcard-network
+    depends_on:
+      - creditcard-db

@@ -7,9 +7,11 @@ API de autorização de transações bancárias para cartão de crédito/benefí
 - Linguagens [Java 11]
 - Frameworks [SpringBoot, SpringMVC, Maven]
 - Banco de dados [MySQL]
+- Script e versionamento do banco de dados [Flyway]
 - Documentação [Swagger]
 - Testes unitários [JUnit 5]
-- Coverage [Jacoco]
+- Coverage [Jacoco] 
+- Conteinerização [Docker]
 
 ### Execução da API
 
@@ -34,12 +36,11 @@ Acessar o diretório do projeto e compilar com o maven:
 $ mvn clean install
 ```
 ```sh
-$ mvn clean package
+$ ./mvnw package -Pdocker
 ```
 ```sh
-$ docker-compose up --build
+$ docker-compose up -d
 ```
-*ps.: (sigo testando se executa corretamente, pois o build via do docker apresentou instabilidade)
 
 ### Documentação da API
 
